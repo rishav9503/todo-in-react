@@ -123,7 +123,43 @@ export default class List extends Component {
           ))}
         </ListGroup>
 
-       
+        {this.state.add && (
+          <div style={{ background: "black" }}>
+            <InputGroup>
+              <InputGroupAddon
+                addonType="prepend"
+                style={{
+                  width: 100,
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                  padding: 20
+                }}
+              >
+                <MdRadioButtonUnchecked color="#fff" />
+              </InputGroupAddon>
+              <Input
+                style={{
+                  backgroundColor: "#000",
+                  color: "#fff",
+                  borderColor: "#fff",
+                  borderBottomWidth: 1,
+                  borderTopWidth: 0,
+                  borderLeftWidth: 0,
+                  borderRightWidth: 0
+                }}
+                onChange={e => {
+                  this.setState({ todoName: e.target.value });
+                }}
+                value={this.state.todoName}
+                onKeyDown={e => {
+                  if (e.key === "Enter") {
+                    this.addTodo();
+                  }
+                }}
+              />
+            </InputGroup>
+          </div>
+        )}
       </div>
     );
   }
